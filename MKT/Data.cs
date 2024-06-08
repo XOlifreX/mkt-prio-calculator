@@ -328,8 +328,6 @@ namespace MKTCoverage.MKT
                 }
             );
 
-            var itExists = this.Drivables.Any(x => x.Value.CoursesTop.Any(y => y.Name == "DS Mario Circuit T"));
-
             foreach (KeyValuePair<string, int> entry in changedRanking)
             {
                 if (!this.Drivables.ContainsKey(entry.Key)) continue;
