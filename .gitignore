@@ -1,0 +1,7 @@
+.vs/
+bin/
+obj/
+
+Data/*.csv
+
+MKTCoverage.csproj.user
