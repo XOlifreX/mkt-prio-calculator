@@ -317,16 +317,18 @@ namespace MKTCoverage.MKT
             // Add whatever DKG you want to include at the top to change the prio list
             // In case there's a DKG you Really want to get regardless of relevance
             List<KeyValuePair<string, int>> changedRanking= ranking.ToList();
-            changedRanking.Sort(
-                delegate (KeyValuePair<string, int> pair1,
-                KeyValuePair<string, int> pair2)
-                {
-                    if (pair1.Key == "Cream B Dasher Mk. 2") return -1;
-                    if (pair2.Key == "Cream B Dasher Mk. 2") return 1;
+            //changedRanking.Sort(
+            //    delegate (KeyValuePair<string, int> pair1,
+            //    KeyValuePair<string, int> pair2)
+            //    {
+            //        if (pair1.Key == "Cream B Dasher Mk. 2") return -1;
+            //        if (pair2.Key == "Cream B Dasher Mk. 2") return 1;
 
-                    return pair2.Value.CompareTo(pair1.Value);
-                }
-            );
+            //        return pair2.Value.CompareTo(pair1.Value);
+            //    }
+            //);
+
+            ranking = ranking.OrderByDescending(x => x.Value).ToDictionary();
 
             foreach (KeyValuePair<string, int> entry in changedRanking)
             {
@@ -380,6 +382,7 @@ namespace MKTCoverage.MKT
                 }
             }
 
+            highPrioRanking = highPrioRanking.OrderByDescending(x => x.Value.courses.Count).ToDictionary();
             Console.WriteLine("\nHighest Prio - Ranking: ");
             i = 1;
 
